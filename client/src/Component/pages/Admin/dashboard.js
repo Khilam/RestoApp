@@ -3,7 +3,7 @@ import {useEffect} from "react"
 //import {getItemAPI,deleteItem} from "../../../redux/actions/menu"
 import UpdateItem from './updateItem'
 import {useSelector,useDispatch} from 'react-redux'
-import {getItemAPI, deleteItem} from "/home/mouna/Bureau/Mon Resto/client/src/Component/Action/item.js"
+import {getItemAPI, deleteItem} from "../../Action/item"
 import { Link } from 'react-router-dom'
 import AddItem from './addItem'
 import { Card, Row, Col } from 'react-bootstrap'

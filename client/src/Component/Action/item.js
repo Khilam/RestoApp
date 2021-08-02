@@ -22,7 +22,7 @@ import {POST_ITEM ,GET_ITEM, DELETE_ITEM,PUT_ITEM } from "./types"
 import * as actionTypes from './types'
  import axios from 'axios'
 
-import {addNewItem,getAllItems, deleteItems,updateItems}   from "/home/mouna/Bureau/Mon Resto/client/src/Component/Action/services.js/api.js"
+import {addNewItem,getAllItems, deleteItems,updateItems}   from "./services.js/api"
 
 export const addItemApi=(title, price,imageUrl,description )=> async (dispatch) =>{
     try{
@@ -78,15 +78,15 @@ export const updateItem = (id,title, price,imageUrl,description ) => async dispa
       console.log(error);
     }
   };
-  export const getProductDetails = (id) => async (dispatch) => {
+  export const getItemDetails = (id) => async (dispatch) => {
     try {
       dispatch({ type: actionTypes.GET_ITEM_DETAILS_REQUEST });
   
-      const { data } = await axios.get(`/api/products/${id}`);
+      const res = await axios.get(`/resto/product/${id}`);
   
       dispatch({
         type: actionTypes.GET_ITEM_DETAILS_SUCCESS,
-        payload: data,
+        payload: res.data,
       });
     } catch (error) {
       dispatch({

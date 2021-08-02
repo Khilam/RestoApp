@@ -5,7 +5,7 @@ const initialState={
   loading:true
 } 
 
- export const itemReducer = ( state = initialState, action) => {
+ export const itemReducer = ( state = { datas: [] }, action) => {
   const { type, payload } = action;
   switch (type){
     case GET_ITEM:
@@ -42,7 +42,7 @@ const initialState={
   return state
 };
 
-export const getItemDetailsReducer = (state={product:{}},action)=>{
+export const getItemDetailsReducer = (state={datas:{}},action)=>{
   switch(action.type){
     case actionTypes.GET_ITEM_DETAILS_REQUEST:
       return{

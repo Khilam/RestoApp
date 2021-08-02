@@ -1,40 +1,79 @@
-// import { createStore ,applyMiddleware} from "redux";
-// import {itemReducer} from "./Reducer/item";
-// import thunk from "redux-thunk"
-// import { combineReducers } from "redux";
-
-
-// const Reducers = combineReducers({
-
-//   itemstore: itemReducer
-
-
-// });
-
-// const store = createStore(Reducers,applyMiddleware(thunk));
-// export default store;
 
 
 import { createStore, combineReducers, applyMiddleware,compose } from "redux";
 import { rootReducer } from "./Reducer/index";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 // import {composeWithDevTools} from "redux-devtools-extension"
 //Reducers
 
-import {commandeReducer} from './Reducer/commandeReducer'
+import {cartReducer} from './Reducer/commandeReducer'
 import {getItemDetailsReducer, itemReducer} from './Reducer/item'
 
 const reducer = combineReducers({
-  commande: commandeReducer,
+  cart: cartReducer,
   getItemDetails:getItemDetailsReducer,
-  item:itemReducer
+  item:itemReducer,
+
+ 
 });
 
 
-const middleWare = [thunk];
+const middleware = [thunk];
 
-// const cartItemsInLocalStorage = localStorage.getItemAPI("cart")
-//   ? JSON.parse(localStorage.getItemAPI("cart"))
+const cartItemsInLocalStorage = localStorage.getItem("cartReducer")
+  ? JSON.parse(localStorage.getItem("cartReducer"))
+  : [];
+
+const INITIAL_STATE = {
+  cart: {
+    cartItems: cartItemsInLocalStorage,
+  },
+ 
+};
+
+const store = createStore(
+  rootReducer,
+  INITIAL_STATE,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+
+
+
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// export const store = createStore(
+//   rootReducer,
+//   INITIAL_STATE,
+//   composeEnhancers(applyMiddleware(...middleware))
+// );
+
+
+export default store;
+
+
+// import { createStore, combineReducers, applyMiddleware } from "redux";
+// import thunk from "redux-thunk";
+// import { composeWithDevTools } from "redux-devtools-extension";
+// import { itemReducer } from "./Reducer/item";
+// // Reducers
+// import { cartReducer } from "./Reducer/commandeReducer";
+// import {
+//   getProductsReducer,
+//   getProductDetailsReducer,
+// } from "./Reducer/commandeReducer";
+
+// const reducer = combineReducers({
+//   cart: cartReducer,
+//   getProducts: getProductsReducer,
+//   getProductDetails: getProductDetailsReducer,
+//   item: itemReducer
+// });
+
+// const middleware = [thunk];
+
+// const cartItemsInLocalStorage = localStorage.getItem("cart")
+//   ? JSON.parse(localStorage.getItem("cart"))
 //   : [];
 
 // const INITIAL_STATE = {
@@ -42,11 +81,12 @@ const middleWare = [thunk];
 //     cartItems: cartItemsInLocalStorage,
 //   },
 // };
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(...middleWare))
-);
 
+// const store = createStore(
+//   reducer,
+  
+  
+//   composeWithDevTools(applyMiddleware(...middleware))
+// );
 
-export default store;
+// export default store;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form,Button,Modal} from "react-bootstrap"
 import {useState} from 'react';
-import {addItemApi} from "/home/mouna/Bureau/Mon Resto/client/src/Component/Action/item.js"
+import {addItemApi} from "../../Action/item"
 import {useDispatch,useSelector} from 'react-redux'
 const AddItem = () => {
     const [show, setShow] = useState(false);
