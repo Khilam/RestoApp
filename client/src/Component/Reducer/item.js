@@ -42,18 +42,31 @@ const initialState={
   return state
 };
 
+
+// const INITIAL_STATE={
+//   datas : [],
+//   loading:true
+// } 
 export const getItemDetailsReducer = (state={datas:{}},action)=>{
+  const { type, payload } = action;
+
   switch(action.type){
     case actionTypes.GET_ITEM_DETAILS_REQUEST:
       return{
-        loading: false,
+        loading: true,
         product: action.payload
-      }
+      };
+      case actionTypes.GET_ITEM_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        product: action.payload,
+      };
       case actionTypes.GET_ITEM_DETAILS_FAIL:
-        return{
-          loading:false,
-          error:action.payload
-        }
+        return {
+        
+          loading: false,
+          error: action.payload,
+        };
         case actionTypes.GET_ITEM_DETAILS_RESET:
           return{
             product:{},
@@ -63,4 +76,4 @@ export const getItemDetailsReducer = (state={datas:{}},action)=>{
           
 
   }
-}
+};

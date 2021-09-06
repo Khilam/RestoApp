@@ -19,7 +19,8 @@ dispatch ({
 localStorage.setItem("cart",JSON.stringify(getState().cart.cartItems));
 };
 
-export const removeFromCart = (id) => (dispatch, getState) => {
+export const removeFromCart = (id) => async(dispatch, getState) => {
+    const {datas}=await axios.get(`/resto/product/${id}`)
     dispatch({
       type: actionTypes.REMOVE_FROM_CART,
       payload: id,

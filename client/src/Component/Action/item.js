@@ -82,7 +82,7 @@ export const updateItem = (id,title, price,imageUrl,description ) => async dispa
     try {
       dispatch({ type: actionTypes.GET_ITEM_DETAILS_REQUEST });
   
-      const res = await axios.get(`/resto/product/${id}`);
+      const res = await axios.get(`http://localhost:4003/resto/product/${id}`);
   
       dispatch({
         type: actionTypes.GET_ITEM_DETAILS_SUCCESS,

@@ -10,8 +10,8 @@ const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
 
-  const productDetails = useSelector((state) => state.getProductDetails);
-  const { loading, error, product } = productDetails;
+  const itemDetails = useSelector((state) => state.getItemDetails);
+  const { loading, error, product } = itemDetails;
 
   useEffect(() => {
     if (product && match.params.id !== product._id) {
@@ -21,7 +21,7 @@ const ProductScreen = ({ match, history }) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));
-    history.push(`/cart`);
+    history.push(`/panier`);
   };
 
   return (

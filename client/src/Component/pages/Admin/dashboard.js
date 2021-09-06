@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import AddItem from './addItem'
 import { Card, Row, Col } from 'react-bootstrap'
 import Navbar from '../navbar'
-import "../home.css"
+import "./dashboard.css"
 
 
 const Dashboard = () => {
@@ -29,23 +29,23 @@ const dispatch = useDispatch()
     console.log(deleteItem(id))
   }
   return(
-    <div>
+    <div className="product" >
       <Navbar/>
       {/* <Link to="/">Back</Link> */}
       <AddItem/>
       
       {loading? "loading...." :
       datas.length===0 ? <div > Aucune publication disponible actuellement</div>:
-      <div className="d-flex justify-content-around cards" >
-              <Row  className="  justify-content-md-center" />
-               <Col  md={6} className=" col g-6"/>
+      <div >
+              <div className="d-flex justify-content-between flex-wrap">
             {datas.map((el,key )=> (
             
-              <div div key={key}>
-              <Card.Img variant="top" src={el.imageUrl} />
+              <div className="crati" key={key}>
+              <Card.Img variant="top" className="image" src={el.imageUrl} />
               <Card.Body>
-              <Card.Title>{el.title}</Card.Title>
-             <Card.Text>
+              <Card.Title className="info__name">{el.title}</Card.Title>
+              {/* <p className="info__price">${price}</p> */}
+             <Card.Text className="text-wrap">
              {el.description}
             </Card.Text>
             <button className="btn btn-danger mt-5 h-25" onClick={() => deleteItemm(el._id)}>supprimer</button>
@@ -55,11 +55,12 @@ const dispatch = useDispatch()
           </div>
             ))}
      </div>
- } 
-          </div>  
-    
+
+          </div> 
+} 
+     </div> 
              
 
-            )}
+   )}
 
 export default Dashboard

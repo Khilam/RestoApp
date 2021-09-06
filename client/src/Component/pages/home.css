@@ -1,5 +1,5 @@
 
-.cards { 
+/* .cards { 
     
     display: flex;
     flex-wrap: wrap;
@@ -11,13 +11,22 @@
    
 
     
+  } */
+  /* .maCarte{
+    display:grid !important;
+    grid-template-columns: 2fr 2fr 2fr !important;
+
+  } */
+  .images{
+    width: 250px !important;
+    height: 250px !important;
   }
-  .row{
+  /* .row{
      width: 50px;
      height: 50px;
-  }
+  } */
 
-  .card {
+  /* .card {
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -27,4 +36,4 @@
     overflow: hidden;
     text-decoration: none;
     margin-left: 20px;
-  }
+  } */

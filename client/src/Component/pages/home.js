@@ -20,7 +20,7 @@ const Home = () => {
     return(
 
      
-      <div>
+      <div >
 
 <Navbar/>
                <h1>Mon Resto</h1>
@@ -28,25 +28,26 @@ const Home = () => {
                
                </div>
               
-              <div className="d-flex justify-content-around cards" >
-              <Row  className="  justify-content-md-center" />
-               <Col  md={6} className=" col g-6"/>
-           
+              <div  className="maCarte"  >
+              {/* <Row  className="  justify-content-md-center" />
+               <Col  md={3} className=" col g-3"/> */}
+           <div className="d-flex justify-content-between flex-wrap">
               {datas.map((el,key )=> (
-                <div  className="cards" key={key}>
+                <div  key={key}>
                
-                 <Card.Img variant="top" src={el.imageUrl}  />
+                 <Card.Img variant="top" className= "images" src={el.imageUrl}  />
                  <Card.Body>
-                 <Card.Title>{el.title}</Card.Title>
+                 <Card.Title >{el.title}</Card.Title>
                  <Card.Text>
                  {el.description}
                 </Card.Text>
                 
-                <Button href="/product" variant="primary">Commander</Button>
+                <Button href="/product/:id" variant="primary">Commander</Button>
                 </Card.Body>
                 </div>
              
              ))}
+             </div>
              {/* </Card> */}
    
            </div>  
